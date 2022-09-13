@@ -1,7 +1,7 @@
-const canv = document.getElementById("canvas");
+const canv = document.querySelector("canvas");
 const ctx = canv.getContext("2d");
 var grass = new Image;
-grass.src = "";
+grass.src = "grass.png";
 function setup() {
     requestAnimationFrame(loop);
 }
