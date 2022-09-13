@@ -9,7 +9,7 @@ function loop() {
     requestAnimationFrame(loop);
     canv.width = innerWidth;
     canv.height = innerHeight;
-    ctx.drawImage();
+    ctx.drawImage(grass, 0, 0);
 }
 
 window.onload = function() {
