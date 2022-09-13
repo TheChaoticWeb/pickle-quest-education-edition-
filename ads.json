@@ -1,12 +1,6 @@
 {
     "ads": [
-        {
-            "id": "cat"
-,           "icon": false
-,           "name": "cat"
-,           "origin": "http.cat"
-        }
-,       {
+       {
             "id": "grammarly2"
 ,           "icon": false
 ,           "name": "Grammarly"
