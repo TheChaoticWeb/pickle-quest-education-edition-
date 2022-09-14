@@ -21,13 +21,14 @@ function loop() {
 //            grassimgypos += 150;
         }
         grassimgxpos += 150;
-    }
-    if (grasimgxpos == grassimgxtarget) {
-        if (grassimgypos < grassimgytarget) {
-            grassimgypos += 150;
-            grassimgxpos = 0;
+        if (grassimgxpos == grassimgxtarget) {
+            if (grassimgypos < grassimgytarget) {
+                grassimgypos += 150;
+                grassimgxpos = 0;
+            }
         }
     }
+    
 }
 
 window.onload = function() {
