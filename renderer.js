@@ -10,6 +10,18 @@ function loop() {
     canv.width = innerWidth;
     canv.height = innerHeight;
     ctx.drawImage(grass, 0, 0);
+    let grassimgxtarget = math.floor(innerWidth / 150) * 150;
+    let grassimgytarget = math.floor(innerHeight / 150) * 150;
+    
+    var grassimgxpos = 0;
+    var grassimgypos = 0;
+    while(grassimgxpos < grassimgxtarget) {
+        while(grassimgypos < grassimgytarget) {
+            ctx.drawImage(grass, grassimgxpos, grassimgypos);
+            grassimgypos += 150;
+        }
+        grassimgxpos += 150;
+    }
 }
 
 window.onload = function() {
