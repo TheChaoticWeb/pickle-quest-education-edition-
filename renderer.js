@@ -10,8 +10,8 @@ function loop() {
     canv.width = innerWidth;
     canv.height = innerHeight;
     ctx.drawImage(grass, 0, 0);
-    let grassimgxtarget = math.floor(innerWidth / 150) * 150;
-    let grassimgytarget = math.floor(innerHeight / 150) * 150;
+    let grassimgxtarget = Math.floor(innerWidth / 150) * 150;
+    let grassimgytarget = Math.floor(innerHeight / 150) * 150;
     
     var grassimgxpos = 0;
     var grassimgypos = 0;
