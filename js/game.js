@@ -1,4 +1,4 @@
-import { Application, Sprite, Assets } from 'pixi.js';
+import { Application, Sprite, Assets } from '../pixi.js';
 
 const app = new Application();
 
