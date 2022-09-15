@@ -1,3 +1,5 @@
+import { Application, Sprite, Assets } from 'pixi.js';
+
 const app = new Application();
 
 document.body.appendChild(app.view);
