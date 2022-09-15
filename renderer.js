@@ -23,8 +23,8 @@ function loop() {
         grassimgxpos += 150;
         if (grassimgxpos == grassimgxtarget) {
             if (grassimgypos < grassimgytarget) {
-                grassimgypos += 150;
-                grassimgxpos = 0;
+                //grassimgypos += 150;
+                //grassimgxpos = 0;
             }
         }
     }
