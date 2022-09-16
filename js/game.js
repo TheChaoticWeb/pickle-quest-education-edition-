@@ -1,10 +1,10 @@
-import { Application, Sprite, Assets } from '../pixi.js';
+//import { Application, Sprite, Assets } from '../pixi.js';
 
 const app = new Application();
 
 document.body.appendChild(app.view);
 
-const grassTexture = await Assets.load('bunny.png');
+const grassTexture = await Assets.load('grass.png');
 
 const grass = new Sprite(grassTexture);
 
