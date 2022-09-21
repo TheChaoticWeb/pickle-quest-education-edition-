@@ -123,6 +123,10 @@ onload = async function() {
 					var choice = await Game.waitEnterKeyPressed();
 					switch (choice) {
 						case "P":
+							Game.adManager.loadAd({ "id": "portal" ,"icon": false ,"name": "Portal" ,"origin": "thinkwithportals.com" });
+							break;
+						case "2":
+							Game.adManager.loadAd({ "id": "portal2" ,"icon": false ,"name": "Portal 2" ,"origin": "thinkwithportals.com" });
 							break;
 						default:
 							break;
