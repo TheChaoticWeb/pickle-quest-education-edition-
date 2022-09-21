@@ -124,6 +124,9 @@ onload = async function() {
             }
         }
     }
+	if (usertag == "enterHeckerConsole") {
+		await Game.slowPrintPlus(["This part is a Work In progress."],[100]);
+	}
     
 	await Game.slowPrintPlus(["Hello, User...\n\nWelcome back to Pickle Quest!\n\nWe track your progress using your `UserTag`\nYou will input your `UserTag` right here:\n> " + usertag, "\n\n(!) ", "Achivement Unlocked: ", "What's your name again? I forgot.", "\n", "Are you ready, ", usertag, "?", "\n\n", "Your very Owen adventure is about to unfold.", "\n", "Take courage, and leap into the world of SCIENCE! where dreams, baking soda, and vinegar await.", "\n", "I'll be expecting you later.", "\n", "Have fun", "..", "."], [0, 250, 100, 50, 250, 100, 200, 100, 250, 100, 250, 100, 250, 200, 250, 200, 750, 2000]);
 	await Game.slowPrintPlus(["Good morning!", "\n", "You have been in sleep mode for", " ", "NINE", " ", "NINE", " ", "NINE", " ", "NINE", " ", "NINE", " ", "NINE", " ", "NI", "-", "\n", "You decided to stop.", "\n\n(!) ", "Achivement Unlocked: ", "Rise and sine!", "\n", "so yea ur awake now :)", "\n", "What would you like to do?", "\n\n", "~ Go back to (s)leep", "\n", "~ (T)urn on your computer", "\n\n", "(Choose s/T)", "\n> "], [50, 250, 100, 750, 25, 500, 25, 500, 25, 500, 25, 500, 25, 750, 25, 500, 25, 100, 250, 100, 250, 100, 50, 250, 100, 250, 100, 250, 50, 250, 50, 250, 100, 250]);
