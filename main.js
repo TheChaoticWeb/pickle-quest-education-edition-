@@ -118,7 +118,16 @@ onload = async function() {
                     doneTestMode = true;
                     break;
 				case "a":
-					await Game.slowPrintPlus(["Please choose an ad to test\n~ (P)ortal 1 AD\n~ Portal (2)\n> "],[100]);
+					await Game.slowPrintPlus(["Please choose an ad to test\n~ (P)ortal 1 AD\n~ Portal (2) AD\n> "],[100]);
+					Game.inputLockToggle();
+					var choice = await Game.waitEnterKeyPressed();
+					switch (choice) {
+						case "P":
+							break;
+						default:
+							break;
+					}
+					break;
                 default:
                     await Game.slowPrintPlus(["Please Choose a vaild option","\n..."],[100,1000]);
                     break;
