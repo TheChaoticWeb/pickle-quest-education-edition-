@@ -118,7 +118,7 @@ onload = async function() {
                     doneTestMode = true;
                     break;
                 default:
-                    await Game.slowPrintPlus(["...\n\n","Please Choose a vaild option"],[1000,100]);
+                    await Game.slowPrintPlus([,"Please Choose a vaild option","\n..."],[100,1000]);
                     break;
                     
             }
