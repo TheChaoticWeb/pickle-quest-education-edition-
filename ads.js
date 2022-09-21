@@ -1,12 +1,14 @@
 const DEFAULT_DATA = {
     "ads": [
+        /*
         {
             "id": "cat"
 ,           "icon": false
 ,           "name": "cat"
 ,           "origin": "http.cat"
         }
-,       {
+        */
+/*,*/       {
             "id": "grammarly2"
 ,           "icon": false
 ,           "name": "Grammarly"
@@ -18,22 +20,31 @@ const DEFAULT_DATA = {
 ,           "name": "Grammarly"
 ,           "origin": "grammarly.com"
         }
+        /*
 ,       {
             "id": "portal"
 ,           "icon": false
 ,           "name": "Portal"
 ,           "origin": "thinkwithportals.com"
         }
+        
 ,       {
             "id": "portal2"
 ,           "icon": false
 ,           "name": "Portal 2"
 ,           "origin": "thinkwithportals.com"
         }
+        */
 ,       {
             "id": "honey"
 ,           "icon": false
 ,           "name": "Honey"
+,           "origin": "joinhoney.com"
+        }
+        ,       {
+            "id": "billnye1"
+,           "icon": false
+,           "name": "Bill Nye"
 ,           "origin": "joinhoney.com"
         }
     ]
