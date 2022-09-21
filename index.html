@@ -1,32 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="ads.js"></script>
-    <title>Pickle Quest Education Edition: The Interactive Pickle Education Experience&#8482; (Deffinetely not the sequel of Pickle Quest; that job belongs to Pickle Quest 2; but development has been suspended do to this tragedy called school and we've run out of money in our budget AND time due to school not allowing school-issued laptops at lunch time (Yes, I know lunch time is for lunch, and not Pickle Quest 2 development, and I DON'T CARE!!!!!!!!!!!!!) so uhm weeeee're probably doomed. 3 days until I steal your liver. Have fun! Just kidding your're doomed :D)</title>
-    <link rel="stylesheet" href="css/game.css">
-    <script src="https://pixijs.download/v6.5.3/pixi.min.js"></script>
-    <script src="js/game.js"></script>
-</head>
-<body>
-    <AdManagerModal hidden></AdManagerModal>
-    <AdManager hidden>
-        <AdManagerMainVideo>
-            <video width="800" height="500"></video>
-        </AdManagerMainVideo>
-        <AdManagerSkipAdButton data-disabled="disabled">
-            Skip Ad
-        </AdManagerSkipAdButton>
-        <AdManagerLink>
-            <a href="#" target="ad"></a>
-        </AdManagerLink>
-        <AdManagerLoadingAnimation>
-            <img src="assets/AdManagerLoadingAnimation.gif">
-        </AdManagerLoadingAnimation>
-    </AdManager>
+<title>Pickle Quest 22w23a</title>
+<style>
+    AdManager {
+        width: 800px;
+        height: 500px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+		z-index: 2;
+    }
+    AdManagerLoadingAnimation {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    AdManagerSkipAdButton {
+        position: absolute;
+        padding: 8px;
+        background: #eee;
+        font: 11px Arial;
+        bottom: 44px;
+        right: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        opacity: 0.5;
+        user-select: none;
+    }
+    AdManagerSkipAdButton[data-disabled="disabled"] {
+        background: #999;
+        cursor: default;
+    }
+    AdManagerLink {
+        position: absolute;
+        padding: 8px;
+        background: #eee;
+        font: 14px monospace;
+        bottom: 44px;
+        left: 8px;
+        border-radius: 8px;
+        opacity: 0.65;
+    }
+    AdManagerLink:hover {
+        opacity: 0.95;
+    }
+    AdManagerModal {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        background: #000;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+		z-index: 1;
+    }
+    i {
+        color: #888;
+    }
+	body {
+		background: #111;
+	}
+	CommandLine {
+		color: #eee;
+		font: 14px monospace;
+	}
+	CommandLineCursor {
+		color: #1e1;
+	}
+	CommandLineDynamic {
+		color: #ee1;
+	}
+</style>
+<AdManagerModal hidden></AdManagerModal>
+<AdManager hidden>
+    <AdManagerMainVideo>
+        <video width="800" height="500"></video>
+    </AdManagerMainVideo>
+    <AdManagerSkipAdButton data-disabled="disabled">
+        Skip Ad
+    </AdManagerSkipAdButton>
+    <AdManagerLink>
+        <a href="#" target="ad"></a>
+    </AdManagerLink>
+    <AdManagerLoadingAnimation>
+        <img src="assets/AdManagerLoadingAnimation.gif">
+    </AdManagerLoadingAnimation>
+</AdManager>
+<CommandLine>
+	<CommandLineStatic></CommandLineStatic><CommandLineDynamic data-locked="locked"></CommandLineDynamic><CommandLineCursor>&#9608;</CommandLineCursor>
+</CommandLine>
 
-    <script src="js/gameAdsSetup.js"></script>
-</body>
-</html>
+
+<script src="ads.js"></script>
+<script src="main.js"></script>
