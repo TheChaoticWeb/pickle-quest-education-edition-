@@ -152,7 +152,8 @@ onload = async function() {
 			Game.inputLockToggle();
 			var choice = await Game.waitEnterKeyPressed();
 			var backupoftext = Game.innerText;
-			Game.print(backupoftext+choice);
+			Game.print(backupoftext + choice);
+			// Plz work.
 		}
 	}
     
