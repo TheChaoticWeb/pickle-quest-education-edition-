@@ -1,3 +1,4 @@
+// Work!
 var Game = Object.create(null);
 Game.WaitUntil = function(apiKey, promise) {
 	promise.then(function(value) {
