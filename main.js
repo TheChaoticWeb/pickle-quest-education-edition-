@@ -118,7 +118,7 @@ onload = async function() {
                     doneTestMode = true;
                     break;
 				case "a":
-					await Game.slowPrintPlus(["Please choose an ad to test\n~ (P)ortal 1 AD\n~ Portal (2) AD\n> "],[100]);
+					await Game.slowPrintPlus(["Please choose an ad to test\n~ (P)ortal 1 AD\n~ Portal (2) AD\n~ Super (M)icrowave Brothers\n> "],[100]);
 					Game.inputLockToggle();
 					var choice = await Game.waitEnterKeyPressed();
 					switch (choice) {
@@ -127,6 +127,9 @@ onload = async function() {
 							break;
 						case "2":
 							Game.adManager.loadAd({ "id": "portal2" ,"icon": false ,"name": "Portal 2" ,"origin": "thinkwithportals.com" });
+							break;
+						case "M":
+							Game.adManager.loadAd({"id": "supermicrowavebros", "icon": false, "name": "Super Microwave Brothers", "origin": "nintendo.com"});
 							break;
 						default:
 							break;
