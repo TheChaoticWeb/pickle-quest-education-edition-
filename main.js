@@ -40,8 +40,10 @@ Game.slowPrint = async function(text, ...timings) {
 		}
 	}
 }
-Game.slowPrintPlus = async function(texts, timings) {
-	Game.print("");
+Game.slowPrintPlus = async function(texts, timings, keep = false) {
+	if (keep == false) {
+		Game.print("");
+	}
 	for(let i=0; i<texts.length; i++) {
 		let text = texts[i], time = timings[i];
 		for(let c of text) {
@@ -143,7 +145,13 @@ onload = async function() {
         }
     }
 	if (usertag == "enterHeckerConsole") {
-		await Game.slowPrintPlus(["This part is a Work In progress."],[100]);
+		var inheckerconsole = true;
+		await Game.slowPrintPlus(["Welcome to Hecker Console 0.0.1!\nType help to list commands\n"],[50]);
+		while(inheckerconsole) {
+			Game.slowPrintPlus(["\n> "],[50],true);
+			Game.inputLockToggle();
+			var choice = await Game.waitEnterKeyPressed();
+		}
 	}
     
 	await Game.slowPrintPlus(["Hello, User...\n\nWelcome back to Pickle Quest!\n\nWe track your progress using your `UserTag`\nYou will input your `UserTag` right here:\n> " + usertag, "\n\n(!) ", "Achivement Unlocked: ", "What's your name again? I forgot.", "\n", "Are you ready, ", usertag, "?", "\n\n", "Your very Owen adventure is about to unfold.", "\n", "Take courage, and leap into the world of SCIENCE! where dreams, baking soda, and vinegar await.", "\n", "I'll be expecting you later.", "\n", "Have fun", "..", "."], [0, 250, 100, 50, 250, 100, 200, 100, 250, 100, 250, 100, 250, 200, 250, 200, 750, 2000]);
