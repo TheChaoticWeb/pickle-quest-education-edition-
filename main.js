@@ -151,9 +151,8 @@ onload = async function() {
 			Game.slowPrintPlus(["\n> "],[50],true);
 			Game.inputLockToggle();
 			var choice = await Game.waitEnterKeyPressed();
-			var backupoftext = Game.innerText;
+			var backupoftext = $("CommandLineStatic").innerText;
 			Game.print(backupoftext + choice);
-			// Plz work.
 		}
 	}
     
