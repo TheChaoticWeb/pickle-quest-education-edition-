@@ -149,11 +149,23 @@ onload = async function() {
 		var inheckerconsole = true;
 		await Game.slowPrintPlus(["Welcome to Hecker Console 0.0.1!\nType help to list commands\n"],[50]);
 		while(inheckerconsole) {
-			Game.slowPrintPlus(["\n> "],[50],true);
+			await Game.slowPrintPlus(["\n> "],[50],true);
 			Game.inputLockToggle();
-			var choice = await Game.waitEnterKeyPressed();
-			var backupoftext = $("CommandLineStatic").innerText;
-			Game.print(backupoftext + choice);
+			var command = await Game.waitEnterKeyPressed();
+            console.log(command);
+			await Game.slowPrintPlus([command],[0],true);
+            await Game.sleep(0.5);
+            switch(command) {
+                case "help":
+                    await Game.slowPrintPlus(["\n~ help - Shows this text\n~ print - types out the text you want"],[50],true);
+                    break;
+                case "print":
+                    await Game.slowPrintPlus(["\nWIP"],[50],true);
+                    break;
+                default:
+                    await Game.slowPrintPlus(["\nPlease enter a valid command."],[50],true);
+                    break;
+            }
 		}
 	}
     
