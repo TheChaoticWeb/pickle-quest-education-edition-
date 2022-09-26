@@ -1,0 +1,38 @@
+{
+    "ads": [
+       {
+            "id": "grammarly2"
+,           "icon": false
+,           "name": "Grammarly"
+,           "origin": "grammarly.com"
+        }
+,       {
+            "id": "grammarly"
+,           "icon": false
+,           "name": "Grammarly"
+,           "origin": "grammarly.com"
+        }
+
+,       {
+            "id": "honey"
+,           "icon": false
+,           "name": "Honey"
+,           "origin": "joinhoney.com"
+        }
+,       {
+                "id": "billnye"
+    ,           "icon": false
+    ,           "name": "Bill Nye"
+    ,           "origin": "example.com"
+            }
+,       {
+            "id": "billnye2"
+,           "icon": false
+,           "name": "Bill Nye"
+,           "origin": "example.com"
+        }
+        
+    ]
+,   "chance": 0.01
+,   "delay": 14
+}
