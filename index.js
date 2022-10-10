@@ -1,53 +1,28 @@
 const express = require('express');
 const ws = require("express-ws");
 const cookieParser = require("cookie-parser");
+const helmet = require('helmet');
 const app = express();
 ws(app);
 const port = 6969;
-const Database = require("@replit/database")
-const { getUserInfo } = require("@replit/repl-auth")
-const db = new Database()
 const crypto = require('crypto');
 var minify = require('express-minify');
 //app.use(compression());
 app.use(minify());
 app.use(cookieParser());
-
 app.use(express.static(__dirname + '/public'));
-
-var allowedUsers = ["baconLover001"];
+app.use(helmet.frameguard({ action: 'DENY' }));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/game.html');
-  /*
-  const user = getUserInfo(req)
-  if (req.cookies.specialLogin == "yes") {
-    if(req.cookies.userName in allowedUsers){
-      switch(req.cookies.userName) {
-        case "baconLover001":
-          if (req.cookies.password == "baconIsTheBest") {
-            res.sendFile(__dirname + '/game.html')
-          }
-          break;
-      }
-    } else {
-      res.sendFile(__dirname + '/specallogin.html')
-    }
-  } else {
-    if (user) {
-      res.sendFile(__dirname + '/game.html')
-    } else {
-      res.sendFile(__dirname + '/login.html')
-    }
-  }
-  */
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-  db.list().then(keys => {console.log(keys);});
+  // db.list().then(keys => {console.log(keys);});
 });
 
+/*
 app.ws("/", socket => {
   socket.on("message", function(message) {
     try {
@@ -101,3 +76,4 @@ app.ws("/", socket => {
   socket.send("HELLO FRIEND");
   socket.send("Everything typend from this time to the other time will be logged lool");
 });
+*/

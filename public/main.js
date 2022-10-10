@@ -5,6 +5,15 @@ Game.WaitUntil = function(apiKey, promise) {
 	});
 	return promise;
 }
+Game.inIframe = function() {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
+
+
 Game.adManager = Game.WaitUntil("adManager", AdManager.fetchData("ads.json"));
 onkeydown = function(event) {
 	event.preventDefault();
@@ -99,42 +108,37 @@ Game.waitEnterKeyPressed = function() {
 	});
 }
 
-Game.askQuestion = function() {
+Game.askQuestion = async function() {
         var question;
         var choiceNum = Math.random();
 }
 
-onload = async function() {
-	await Game.slowPrintPlus(["Hello, User", "...", "\n\n", "Welcome back ", "to Pickle Quest: Eduacation Edition!", "\n\n", "We track your progress using your ", "`UserTag`\n", "You will input your `UserTag` right here:","\n> "], [50, 500, 250, 200, 50, 250, 50, 250, 50, 250]);
-	Game.inputLockToggle();
-	var usertag = await Game.waitEnterKeyPressed();
-    var doneTestMode = true;
-    if (usertag == "testUser") {
-        doneTestMode = false;
-        while(doneTestMode == false) {
-            await Game.slowPrintPlus(["You have entered: ", "`Test Mode`","\nWhat would you like to do?\n\n~ (E)xit test mode\n~ Test out (a)ds\n~ (J)ump to a specific point in the game\n > "],[50,200,100]);
-            Game.inputLockToggle();
-            var choice = await Game.waitEnterKeyPressed();
-            switch(choice) {
-                case "E":
-                    doneTestMode = true;
-                    break;
-				case "a":
-					await Game.slowPrintPlus(["Please choose an ad to test\n~ (P)ortal 1 AD\n~ Portal (2) AD\n~ Super (M)icrowave Brothers\n> "],[100]);
-					Game.inputLockToggle();
-					var choice = await Game.waitEnterKeyPressed();
-					switch (choice) {
-						case "P":
-							Game.adManager.loadAd({ "id": "portal" ,"icon": false ,"name": "Portal" ,"origin": "thinkwithportals.com" });
-							break;
-						case "2":
-							Game.adManager.loadAd({ "id": "portal2" ,"icon": false ,"name": "Portal 2" ,"origin": "thinkwithportals.com" });
-							break;
-						case "M":
-							Game.adManager.loadAd({"id": "supermicrowavebros", "icon": false, "name": "Super Microwave Brothers", "origin": "nintendo.com"});
-							break;
-						default:
-							break;
+Game.testMode = async function() {
+      var doneTestMode = false;
+      while(doneTestMode == false) {
+          await Game.slowPrintPlus(["You have entered: ", "`Test Mode`","\nWhat would you like to do?\n\n~ (E)xit test mode\n~ Test out (a)ds\n~ (J)ump to a specific point in the game\n > "],[50,200,100]);
+          Game.inputLockToggle();
+          var choice = await Game.waitEnterKeyPressed();
+          switch(choice) {
+              case "E":
+                  doneTestMode = true;
+                  break;
+			        case "a":
+					        await Game.slowPrintPlus(["Please choose an ad to test\n~ (P)ortal 1 AD\n~ Portal (2) AD\n~ Super (M)icrowave Brothers\n> "],[100]);
+					        Game.inputLockToggle();
+					        var choice = await Game.waitEnterKeyPressed();
+					        switch (choice) {
+						        case "P":
+							            Game.adManager.loadAd({ "id": "portal" ,"icon": false ,"name": "Portal" ,"origin": "thinkwithportals.com" });
+							            break;
+						        case "2":
+							            Game.adManager.loadAd({ "id": "portal2" ,"icon": false ,"name": "Portal 2" ,"origin": "thinkwithportals.com" });
+							            break;
+						        case "M":
+							            Game.adManager.loadAd({"id": "supermicrowavebros", "icon": false, "name": "Super Microwave Brothers", "origin": "nintendo.com"});
+							            break;
+						        default:
+							            break;
 					}
 					break;
                 default:
@@ -144,10 +148,20 @@ onload = async function() {
             }
         }
     }
+
+onload = async function() {
+  var doNukeGame = Game.inIframe();
+  if (doNukeGame) {
+    await Game.slowPrintPlus(["Die you sussy baka."],[200]);
+    console.log("No iframes!");
+  } else {
+	await Game.slowPrintPlus(["Hello, User", "...", "\n\n", "Welcome back ", "to Pickle Quest: Eduacation Edition!", "\n\n", "We track your progress using your ", "`UserTag`\n", "You will input your `UserTag` right here:","\n> "], [50, 500, 250, 200, 50, 250, 50, 250, 50, 250]);
+	Game.inputLockToggle();
+	var usertag = await Game.waitEnterKeyPressed();
 	if (usertag == "enterHeckerConsole") {
-		var inheckerconsole = true;
+		var inHeckerConsole = true;
 		await Game.slowPrintPlus(["Welcome to Hecker Console 0.0.1!\nType help to list commands\n"],[50]);
-		while(inheckerconsole) {
+		while(inHeckerConsole) {
 			await Game.slowPrintPlus(["\n> "],[50],true);
 			Game.inputLockToggle();
 			var command = await Game.waitEnterKeyPressed();
@@ -160,6 +174,9 @@ onload = async function() {
                     break;
                 case "print":
                     await Game.slowPrintPlus(["\nWIP"],[50],true);
+                    break;
+              case "exit":
+                    inHeckerConsole = false;
                     break;
                 default:
                     await Game.slowPrintPlus(["\nPlease enter a valid command."],[50],true);
@@ -182,6 +199,7 @@ onload = async function() {
 			choice = await Game.waitEnterKeyPressed();
 			switch(choice) {
 				case "T":
+          $( "#paradoxDialog" ).dialog();
 					await Game.slowPrintPlus(["Congratulations! You have successfully trapped yourself in a paradox!!", "\n\n(!) ", "Achivement Unlocked: ",  "paradox", "\n\n", "paradox\n".repeat(10000)], [100, 250, 100, 50, 250, 1]);
 					break;
 				case "M":
@@ -190,10 +208,13 @@ onload = async function() {
 					await Game.slowPrintPlus(["This part is a work in progress. Try again later."], [200]);
 					break;
 				default:
-					await Game.slowPrintPlus(["You didn't enter a valid option, so you just stand around doing nothing.", "\n\n", "One of the sweet Pickles' evil Assassination Drones flies in through your window\nand shoots a giant laser beam causing your house to explode so big\nthe entire solar system explodes, launching you into the sky\nwhere you fall down and die of fall damage.", "\n\nYou may now close the tab."], [50, 250, 50, 250]);
+					await Game.slowPrintPlus(["You didn't enter a valid option, so you just stand around doing nothing.", "\n\n", "One of the sweet Pickles' evil Assassination Drones flies in through your window\nand shoots a giant laser beam causing your house to explode so big\nthe entire solar system explodes, launching you into the sky\nwhere you fall down and die of fall damage.", "\n\nYou may now close the tab.\n"], [50, 250, 50, 250]);
+          await Game.sleep(5);
+          await Game.slowPrintPlus(["\n ","heres ur computers desktop {{INSERT DISTURBING PHOTO HERE}}"],[1000,200],true)
 			}
 			break;
 		default:
 			Game.slowPrintPlus(["You refuse to choose a valid option, causing your head to explode; in turn, causing you to die bruitally.", "\n", "The sweet Pickles take over the world and you were the only one who could stop them.", "\n\n", "Too bad; so sad", "...", "\n", "You may now close the tab."], [50, 250, 50, 250, 100, 750, 250, 100]);
 	}
+}
 }
